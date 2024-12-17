@@ -4,12 +4,9 @@ import os
 import discord
 from discord.ext import commands
 from openrouter import OpenRouterClient
-from langchain.schema import HumanMessage, AIMessage, SystemMessage
-from langchain.agents import initialize_agent, AgentType
-from langchain.memory import ConversationBufferMemory
 
 # The channel the bot will communicate on.
-CHANNEL_ID = os.getenv("CHANNEL_ID")
+CHANNEL_ID = int(os.getenv("CHANNEL_ID", 0))
 
 # Initialize Discord bot
 intents = discord.Intents.default()
@@ -29,6 +26,7 @@ async def on_ready():
     else:
         await channel.send("Hello!")
 
+
 @bot.event
 async def on_message(message):
     # Ignore messages from the bot itself
@@ -44,6 +42,7 @@ async def on_message(message):
     
     # This line is necessary if you want to process commands as well
     await bot.process_commands(message)
+
 
 @bot.command(name="chat")
 async def chat(ctx, *, message):

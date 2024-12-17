@@ -2,8 +2,11 @@
 
 import asyncio
 import os
+
 from dotenv import load_dotenv
+
 from openrouter import OpenRouterClient
+
 
 async def chat_loop():
 
@@ -26,6 +29,7 @@ async def chat_loop():
         response = await client.get_chat_response(user_input)
         print(response)
 
+
 def main():
     load_dotenv()
     if not os.getenv("OPENROUTER_API_KEY"):
@@ -34,5 +38,6 @@ def main():
         
     asyncio.run(chat_loop())
 
+
 if __name__ == "__main__":
-    main() 
+    main()

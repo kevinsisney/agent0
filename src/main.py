@@ -9,12 +9,12 @@ from dotenv import load_dotenv
 from discord_bot import bot
 from sandbox import chat_loop
 
-load_dotenv()
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Run Discord bot or sandbox chat interface')
     parser.add_argument('--sandbox', action='store_true', help='Run in sandbox mode instead of Discord bot mode')
     return parser.parse_args()
+
 
 def main():
     load_dotenv()
@@ -34,5 +34,6 @@ def main():
             return
         bot.run(os.getenv("DISCORD_TOKEN"))
 
+
 if __name__ == "__main__":
-    main() 
+    main()

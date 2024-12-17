@@ -1,8 +1,10 @@
 # openrouter.py - a simple client for the OpenRouter API.
 
 import os
+
 import aiohttp
 from dotenv import load_dotenv
+
 
 class OpenRouterClient:
 
