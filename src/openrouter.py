@@ -3,16 +3,14 @@
 import os
 
 import aiohttp
-from dotenv import load_dotenv
 
 
 class OpenRouterClient:
 
     def __init__(self):
-        load_dotenv()
         self.api_key = os.getenv("OPENROUTER_API_KEY")
         self.base_url = "https://openrouter.ai/api/v1"
-        self.model = "meta-llama/llama-3.1-70b-instruct:free"
+        self.model = os.environ['OPENROUTER_MODEL']
         # Initialize conversation history as an empty list
         self.conversation_history = []
 
